@@ -9,12 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AssignmentSixApplication {
 
+    public class Message{
+        public String message;
+
+        public Message (String message){
+            this.message = message;
+        }
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(AssignmentSixApplication.class, args);
     }
 
     @GetMapping("/")
-    public String hello(){
-        return "Hello, World!";
+    public Message hello(){
+        return new Message("Hello, World!");
     }
 }
