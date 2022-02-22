@@ -189,7 +189,41 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public boolean addCustomer(Customer newCustomer) {
-        return false;
+        boolean result = false;
+        try{
+            // Connect to DB
+            conn = ConnectionFactory.getConnection();
+            System.out.println("Connection to SQLite has been established.");
+
+            // Make SQL query
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("INSERT INTO Customer(FirstName, LastName, Country, PostalCode, Phone, Email) VALUES(?, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, newCustomer.getFirstName());
+            preparedStatement.setString(2, newCustomer.getLastName());
+            preparedStatement.setString(3, newCustomer.getCountry());
+            preparedStatement.setString(4, newCustomer.getPostalCode());
+            preparedStatement.setString(5, newCustomer.getPhone());
+            preparedStatement.setString(6, newCustomer.getEmail());
+
+            // Execute Query
+            //ResultSet resultSet = preparedStatement.execute();
+
+            preparedStatement.execute();
+            System.out.println("Add new customer successful");
+            result = true;
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        finally {
+            try {
+                conn.close();
+            }
+            catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        }
+        return result;
     }
 
     @Override

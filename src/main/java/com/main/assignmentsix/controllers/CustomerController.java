@@ -2,10 +2,7 @@ package com.main.assignmentsix.controllers;
 
 import com.main.assignmentsix.models.Customer;
 import com.main.assignmentsix.data_access.CustomerRepository;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,4 +34,7 @@ public class CustomerController {
     @RequestMapping(value="customer/{limit}/{offset}", method = RequestMethod.GET)
     public List<Customer> getSpecificAmountOfCustomers(@PathVariable String limit, @PathVariable String offset){
         return customerRepository.getSpecificAmountOfCustomers(limit, offset);}
+
+    @RequestMapping(value="customer", consumes = "application/json", produces = "application/json", method = RequestMethod.POST)
+    public boolean addCustomer(@RequestBody Customer customer){return customerRepository.addCustomer(customer);}
 }
