@@ -307,7 +307,39 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public List<CustomerSpender> getCustomerSpender() {
-        return null;
+        List<CustomerSpender> customerSpenderList = new ArrayList<>();
+        try{
+            // Connect to DB
+            conn = ConnectionFactory.getConnection();
+            System.out.println("Connection to SQLite has been established.");
+
+            // Make SQL query
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT SUM(Total), CustomerId FROM Invoice GROUP BY CustomerId ORDER BY SUM(Total) DESC");
+
+            // Execute Query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                customerSpenderList.add(new CustomerSpender(
+                        resultSet.getInt("CustomerId"),
+                        resultSet.getDouble("SUM(Total)")
+                ));
+            }
+            System.out.println("Select customer's spending successful");
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        finally {
+            try {
+                conn.close();
+            }
+            catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        }
+        return customerSpenderList;
     }
 
     @Override

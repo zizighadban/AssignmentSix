@@ -3,6 +3,7 @@ package com.main.assignmentsix.controllers;
 import com.main.assignmentsix.models.Customer;
 import com.main.assignmentsix.data_access.CustomerRepository;
 import com.main.assignmentsix.models.CustomerCountry;
+import com.main.assignmentsix.models.CustomerSpender;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,5 +50,10 @@ public class CustomerController {
 
     @RequestMapping(value = "customer/country", method = RequestMethod.GET)
     public List<CustomerCountry> getCustomerCountry(){return customerRepository.getCustomerCountry();}
+
+    @RequestMapping(value = "customer/spender", method = RequestMethod.GET)
+    public List<CustomerSpender> getCustomerSpender(){
+        return customerRepository.getCustomerSpender();
+    }
 
 }
