@@ -2,6 +2,7 @@ package com.main.assignmentsix.controllers;
 
 import com.main.assignmentsix.models.Customer;
 import com.main.assignmentsix.data_access.CustomerRepository;
+import com.main.assignmentsix.models.CustomerCountry;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +46,8 @@ public class CustomerController {
         }
         return customerRepository.updateCustomer(customer);
     }
+
+    @RequestMapping(value = "customer/country", method = RequestMethod.GET)
+    public List<CustomerCountry> getCustomerCountry(){return customerRepository.getCustomerCountry();}
 
 }

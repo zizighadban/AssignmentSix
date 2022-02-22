@@ -270,7 +270,39 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public List<CustomerCountry> getCustomerCountry() {
-        return null;
+        List<CustomerCountry> customerCountryList = new ArrayList<>();
+        try{
+            // Connect to DB
+            conn = ConnectionFactory.getConnection();
+            System.out.println("Connection to SQLite has been established.");
+
+            // Make SQL query
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT COUNT(Country), Country FROM Customer GROUP BY Country ORDER BY COUNT(Country) DESC");
+
+            // Execute Query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                customerCountryList.add(new CustomerCountry(
+                        resultSet.getInt("COUNT(Country)"),
+                        resultSet.getString("Country")
+                ));
+            }
+            System.out.println("Select customers within chosen limit and offset successful");
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        finally {
+            try {
+                conn.close();
+            }
+            catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        }
+        return customerCountryList;
     }
 
     @Override
