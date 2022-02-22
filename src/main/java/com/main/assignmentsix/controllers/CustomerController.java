@@ -35,6 +35,15 @@ public class CustomerController {
     public List<Customer> getSpecificAmountOfCustomers(@PathVariable String limit, @PathVariable String offset){
         return customerRepository.getSpecificAmountOfCustomers(limit, offset);}
 
-    @RequestMapping(value="customer", consumes = "application/json", produces = "application/json", method = RequestMethod.POST)
+    @RequestMapping(value="customer", method = RequestMethod.POST)
     public boolean addCustomer(@RequestBody Customer customer){return customerRepository.addCustomer(customer);}
+
+    @RequestMapping(value="customer", method = RequestMethod.PUT)
+    public boolean updateCustomer(@RequestBody Customer customer){
+        if(getCustomerById(""+customer.getCustomerId()) == null){
+            return false;
+        }
+        return customerRepository.updateCustomer(customer);
+    }
+
 }

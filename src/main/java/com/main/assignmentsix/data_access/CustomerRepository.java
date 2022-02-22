@@ -44,6 +44,10 @@ public class CustomerRepository implements ICustomerRepository{
                         resultSet.getString("Email")
                 );
             }
+            if(customer == null){
+                System.out.println("CustomerID invalid!");
+                return null;
+            }
             System.out.println("Select specific customer by ID successful");
         }
         catch (Exception exception){
@@ -206,10 +210,48 @@ public class CustomerRepository implements ICustomerRepository{
             preparedStatement.setString(6, newCustomer.getEmail());
 
             // Execute Query
-            //ResultSet resultSet = preparedStatement.execute();
-
             preparedStatement.execute();
+
             System.out.println("Add new customer successful");
+            result = true;
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        finally {
+            try {
+                conn.close();
+            }
+            catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer){
+        boolean result = false;
+        try{
+            // Connect to DB
+            conn = ConnectionFactory.getConnection();
+            System.out.println("Connection to SQLite has been established.");
+
+            // Make SQL query
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("UPDATE Customer SET FirstName = ?, LastName = ?, Country = ?, PostalCode = ?, Phone = ?, Email = ? WHERE CustomerId = ?");
+            preparedStatement.setString(1, customer.getFirstName());
+            preparedStatement.setString(2, customer.getLastName());
+            preparedStatement.setString(3, customer.getCountry());
+            preparedStatement.setString(4, customer.getPostalCode());
+            preparedStatement.setString(5, customer.getPhone());
+            preparedStatement.setString(6, customer.getEmail());
+            preparedStatement.setInt(7, customer.getCustomerId());
+
+            // Execute Query
+            preparedStatement.execute();
+
+            System.out.println("Update customer successful");
             result = true;
         }
         catch (Exception exception){

@@ -14,6 +14,7 @@ public interface ICustomerRepository {
     public Customer getCustomerByFirstName(String firstName);
     public List<Customer> getSpecificAmountOfCustomers(String limit, String offset);
     public boolean addCustomer(Customer newCustomer);
+    public boolean updateCustomer(Customer customer);
     public List<CustomerCountry> getCustomerCountry();
     public List<CustomerSpender> getCustomerSpender();
     public CustomerGenre getCustomerGenre(int customerId);
