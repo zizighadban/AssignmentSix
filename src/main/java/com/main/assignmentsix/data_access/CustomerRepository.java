@@ -5,14 +5,14 @@ import com.main.assignmentsix.models.Customer;
 import com.main.assignmentsix.models.CustomerCountry;
 import com.main.assignmentsix.models.CustomerGenre;
 import com.main.assignmentsix.models.CustomerSpender;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
-@Service
+@Repository
 public class CustomerRepository implements ICustomerRepository{
     private String URL = ConnectionHelper.CONNECTION_URL;
     private Connection conn = null;

@@ -4,11 +4,9 @@ import com.main.assignmentsix.models.Customer;
 import com.main.assignmentsix.models.CustomerCountry;
 import com.main.assignmentsix.models.CustomerGenre;
 import com.main.assignmentsix.models.CustomerSpender;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ICustomerRepository {
 
     public Customer getCustomerById(String customerId);
