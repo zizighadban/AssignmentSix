@@ -33,4 +33,8 @@ public class CustomerController {
 
     @RequestMapping(value="customer/firstname/{firstName}", method = RequestMethod.GET)
     public Customer getCustomerByFirstName(@PathVariable String firstName){return customerRepository.getCustomerByFirstName(firstName);}
+
+    @RequestMapping(value="customer/{limit}/{offset}", method = RequestMethod.GET)
+    public List<Customer> getSpecificAmountOfCustomers(@PathVariable String limit, @PathVariable String offset){
+        return customerRepository.getSpecificAmountOfCustomers(limit, offset);}
 }

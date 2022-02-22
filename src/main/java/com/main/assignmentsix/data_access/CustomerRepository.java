@@ -44,7 +44,7 @@ public class CustomerRepository implements ICustomerRepository{
                         resultSet.getString("Email")
                 );
             }
-            System.out.println("Select specific customer successful");
+            System.out.println("Select specific customer by ID successful");
         }
         catch (Exception exception){
             System.out.println(exception.getMessage());
@@ -127,7 +127,7 @@ public class CustomerRepository implements ICustomerRepository{
                         resultSet.getString("Email")
                 );
             }
-            System.out.println("Select specific customer successful");
+            System.out.println("Select specific customer by firstname successful");
         }
         catch (Exception exception){
             System.out.println(exception.getMessage());
@@ -144,8 +144,47 @@ public class CustomerRepository implements ICustomerRepository{
     }
 
     @Override
-    public List<Customer> getSpecificAmountOfCustomer(int limit, int offset) {
-        return null;
+    public List<Customer> getSpecificAmountOfCustomers(String limit,String offset) {
+        List<Customer> customerList = new ArrayList<>();
+        try{
+            // Connect to DB
+            conn = ConnectionFactory.getConnection();
+            System.out.println("Connection to SQLite has been established.");
+
+            // Make SQL query
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer LIMIT ? OFFSET ?");
+            preparedStatement.setString(1,limit);
+            preparedStatement.setString(2,offset);
+
+            // Execute Query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                customerList.add(new Customer(
+                        resultSet.getInt("CustomerId"),
+                        resultSet.getString("FirstName"),
+                        resultSet.getString("LastName"),
+                        resultSet.getString("Country"),
+                        resultSet.getString("PostalCode"),
+                        resultSet.getString("Phone"),
+                        resultSet.getString("Email")
+                ));
+            }
+            System.out.println("Select customers within chosen limit and offset successful");
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        finally {
+            try {
+                conn.close();
+            }
+            catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        }
+        return customerList;
     }
 
     @Override

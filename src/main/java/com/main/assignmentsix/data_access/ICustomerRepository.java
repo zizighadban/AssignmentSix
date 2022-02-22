@@ -12,7 +12,7 @@ public interface ICustomerRepository {
     public Customer getCustomerById(String customerId);
     public List<Customer> getAllCustomers();
     public Customer getCustomerByFirstName(String firstName);
-    public List<Customer> getSpecificAmountOfCustomer(int limit, int offset);
+    public List<Customer> getSpecificAmountOfCustomers(String limit, String offset);
     public boolean addCustomer(Customer newCustomer);
     public List<CustomerCountry> getCustomerCountry();
     public List<CustomerSpender> getCustomerSpender();
