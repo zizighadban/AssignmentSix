@@ -5,11 +5,9 @@ import com.main.assignmentsix.models.Customer;
 import com.main.assignmentsix.models.CustomerCountry;
 import com.main.assignmentsix.models.CustomerGenre;
 import com.main.assignmentsix.models.CustomerSpender;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -24,7 +22,7 @@ public class CustomerRepository implements ICustomerRepository{
         Customer customer = null;
         try{
             // Connect to DB
-            conn = DriverManager.getConnection(URL);
+            conn = ConnectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
