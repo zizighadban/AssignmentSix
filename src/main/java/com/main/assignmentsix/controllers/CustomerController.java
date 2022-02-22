@@ -31,4 +31,6 @@ public class CustomerController {
     @RequestMapping(value="customer", method = RequestMethod.GET)
     public List<Customer> getAllCustomers(){return customerRepository.getAllCustomers();}
 
+    @RequestMapping(value="customer/firstname/{firstName}", method = RequestMethod.GET)
+    public Customer getCustomerByFirstName(@PathVariable String firstName){return customerRepository.getCustomerByFirstName(firstName);}
 }
