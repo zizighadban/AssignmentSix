@@ -17,5 +17,5 @@ public interface ICustomerRepository {
     public boolean updateCustomer(Customer customer);
     public List<CustomerCountry> getCustomerCountry();
     public List<CustomerSpender> getCustomerSpender();
-    public CustomerGenre getCustomerGenre(int customerId);
+    public CustomerGenre getCustomerGenre(String customerId);
 }

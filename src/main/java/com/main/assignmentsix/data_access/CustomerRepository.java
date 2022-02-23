@@ -343,7 +343,57 @@ public class CustomerRepository implements ICustomerRepository{
     }
 
     @Override
-    public CustomerGenre getCustomerGenre(int customerId) {
-        return null;
+    public CustomerGenre getCustomerGenre(String customerId) {
+        CustomerGenre customer = null;
+        try{
+            // Connect to DB
+            conn = ConnectionFactory.getConnection();
+            System.out.println("Connection to SQLite has been established.");
+
+            // Make SQL query
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT COUNT(Track.TrackId) AS TrackName, Genre.Name\n" +
+                            "FROM Track, Genre, Customer, Invoice, InvoiceLine\n" +
+                            "WHERE Customer.CustomerId = Invoice.CustomerId\n" +
+                            "AND Invoice.InvoiceId = InvoiceLine.InvoiceId\n" +
+                            "AND Track.TrackId = InvoiceLine.TrackId\n" +
+                            "AND Genre.GenreId = Track.GenreId\n" +
+                            "AND Customer.CustomerId = ?\n" +
+                            "GROUP BY Genre.Name\n" +
+                            "ORDER BY COUNT(Track.TrackId) DESC");
+            preparedStatement.setString(1, customerId);
+
+            // Execute Query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            int highestResult = 0;
+            ArrayList<String> genres = new ArrayList<>();
+            while (resultSet.next()) {
+                int result = resultSet.getInt("TrackName");
+                if(highestResult == 0){
+                    highestResult = result;
+                    genres.add(resultSet.getString("Name"));
+                }
+                else if(result == highestResult){
+                    genres.add(resultSet.getString("Name"));
+                }else {
+                    break;
+                }
+            }
+            customer = new CustomerGenre(genres);
+            System.out.println("Select customer's most popular genres successful");
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        finally {
+            try {
+                conn.close();
+            }
+            catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        }
+        return customer;
     }
 }

@@ -3,9 +3,11 @@ package com.main.assignmentsix.controllers;
 import com.main.assignmentsix.models.Customer;
 import com.main.assignmentsix.data_access.CustomerRepository;
 import com.main.assignmentsix.models.CustomerCountry;
+import com.main.assignmentsix.models.CustomerGenre;
 import com.main.assignmentsix.models.CustomerSpender;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,17 +30,24 @@ public class CustomerController {
     }
 
     @RequestMapping(value="customer", method = RequestMethod.GET)
-    public List<Customer> getAllCustomers(){return customerRepository.getAllCustomers();}
+    public List<Customer> getAllCustomers(){
+        return customerRepository.getAllCustomers();
+    }
 
     @RequestMapping(value="customer/firstname/{firstName}", method = RequestMethod.GET)
-    public Customer getCustomerByFirstName(@PathVariable String firstName){return customerRepository.getCustomerByFirstName(firstName);}
+    public Customer getCustomerByFirstName(@PathVariable String firstName){
+        return customerRepository.getCustomerByFirstName(firstName);
+    }
 
     @RequestMapping(value="customer/{limit}/{offset}", method = RequestMethod.GET)
     public List<Customer> getSpecificAmountOfCustomers(@PathVariable String limit, @PathVariable String offset){
-        return customerRepository.getSpecificAmountOfCustomers(limit, offset);}
+        return customerRepository.getSpecificAmountOfCustomers(limit, offset);
+    }
 
     @RequestMapping(value="customer", method = RequestMethod.POST)
-    public boolean addCustomer(@RequestBody Customer customer){return customerRepository.addCustomer(customer);}
+    public boolean addCustomer(@RequestBody Customer customer){
+        return customerRepository.addCustomer(customer);
+    }
 
     @RequestMapping(value="customer", method = RequestMethod.PUT)
     public boolean updateCustomer(@RequestBody Customer customer){
@@ -49,11 +58,18 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "customer/country", method = RequestMethod.GET)
-    public List<CustomerCountry> getCustomerCountry(){return customerRepository.getCustomerCountry();}
+    public List<CustomerCountry> getCustomerCountry(){
+        return customerRepository.getCustomerCountry();
+    }
 
     @RequestMapping(value = "customer/spender", method = RequestMethod.GET)
     public List<CustomerSpender> getCustomerSpender(){
         return customerRepository.getCustomerSpender();
+    }
+
+    @RequestMapping(value = "customer/genre/{id}", method = RequestMethod.GET)
+    public CustomerGenre getCustomerGenre(@PathVariable String id){
+        return customerRepository.getCustomerGenre(id);
     }
 
 }
