@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chinook Customers</title>
+</head>
+<body>
+    <form th:action="@{/search}" method="get">
+        <div>
+            <label for="searchBar">Search Track</label>
+            <input id="searchBar" type="text" name="param" placeholder="Search song..">
+            <span>
+                <input type="submit" value="Search">
+            </span>
+        </div>
+    </form>
+
+    <div th:if="${searchResult != null}">
+        <ul th:each="result: ${searchResult}">
+            <li th:text="${result.getSong().getSongName()}"></li>
+        </ul>
+    </div>
+
+    <div th:if="${searchResult == null}">
+        <h1>Five random artists</h1>
+        <ul th:each="artist: ${artists}">
+            <li th:text="${artist.getArtistName()}"></li>
+        </ul>
+
+        <h1>Five random songs</h1>
+        <ul th:each="song: ${songs}">
+            <li th:text="${song.getSongName()}"></li>
+        </ul>
+
+        <h1>Five random genres</h1>
+        <ul th:each="genre: ${genres}">
+            <li th:text="${genre.getGenreName()}"></li>
+        </ul>
+    </div>
+</body>
+</html>
