@@ -352,33 +352,28 @@ public class CustomerRepository implements ICustomerRepository{
 
             // Make SQL query
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("SELECT COUNT(Track.TrackId) AS GenreCount, Genre.Name\n" +
+                    conn.prepareStatement("WITH y AS (SELECT COUNT(Track.TrackId) AS GenreCount, Genre.Name AS GenreName\n" +
                             "FROM Track, Genre, Customer, Invoice, InvoiceLine\n" +
                             "WHERE Customer.CustomerId = Invoice.CustomerId\n" +
                             "AND Invoice.InvoiceId = InvoiceLine.InvoiceId\n" +
                             "AND Track.TrackId = InvoiceLine.TrackId\n" +
                             "AND Genre.GenreId = Track.GenreId\n" +
                             "AND Customer.CustomerId = ?\n" +
-                            "GROUP BY Genre.Name\n" +
-                            "ORDER BY COUNT(Track.TrackId) DESC");
+                            "GROUP BY GenreName\n" +
+                            "ORDER BY GenreCount DESC)\n" +
+                            "SELECT GenreCount, GenreName\n" +
+                            "FROM y\n" +
+                            "WHERE (SELECT MAX(GenreCount) from y) = GenreCount");
             preparedStatement.setString(1, customerId);
 
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            int highestResult = 0;
             ArrayList<String> genres = new ArrayList<>();
             while (resultSet.next()) {
-                int result = resultSet.getInt("GenreCount");
-                if(highestResult == 0){
-                    highestResult = result;
-                    genres.add(resultSet.getString("Name"));
-                }
-                else if(result == highestResult){
-                    genres.add(resultSet.getString("Name"));
-                }else {
-                    break;
-                }
+                genres.add(
+                        resultSet.getString("GenreName")
+                );
             }
             customer = new CustomerGenre(genres);
             System.out.println("Select customer's most popular genres successful");
