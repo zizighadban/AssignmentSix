@@ -352,7 +352,7 @@ public class CustomerRepository implements ICustomerRepository{
 
             // Make SQL query
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("SELECT COUNT(Track.TrackId) AS TrackName, Genre.Name\n" +
+                    conn.prepareStatement("SELECT COUNT(Track.TrackId) AS GenreCount, Genre.Name\n" +
                             "FROM Track, Genre, Customer, Invoice, InvoiceLine\n" +
                             "WHERE Customer.CustomerId = Invoice.CustomerId\n" +
                             "AND Invoice.InvoiceId = InvoiceLine.InvoiceId\n" +
@@ -369,7 +369,7 @@ public class CustomerRepository implements ICustomerRepository{
             int highestResult = 0;
             ArrayList<String> genres = new ArrayList<>();
             while (resultSet.next()) {
-                int result = resultSet.getInt("TrackName");
+                int result = resultSet.getInt("GenreCount");
                 if(highestResult == 0){
                     highestResult = result;
                     genres.add(resultSet.getString("Name"));
