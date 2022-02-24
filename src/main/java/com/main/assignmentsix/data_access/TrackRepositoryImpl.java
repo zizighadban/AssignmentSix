@@ -67,6 +67,9 @@ public class TrackRepositoryImpl implements TrackRepository{
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                if(!resultSet.getString("TrackName").contains(song.getSongName())){
+                    continue;
+                }
                 trackList.add(new Track(
                         new Artist(resultSet.getString("ArtistName")),
                         resultSet.getString("AlbumName"),
