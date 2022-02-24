@@ -15,6 +15,7 @@ public class ProdConnectionFactory implements DatabaseConnectionFactory {
 
     @Override
     public Connection getConnection() throws SQLException {
+        //Returns the appropriate filepath to the database for production.
         return DriverManager.getConnection(URL);
     }
 }

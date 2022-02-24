@@ -27,6 +27,7 @@ public class TrackController {
     public String view(
             Model model
     ){
+        //When start page is loaded a model is sent to thymeleaf-html along with 5 random artists, songs and genres.
         model.addAttribute("artists", artistService.getFiveRandomArtists());
         model.addAttribute("songs", trackService.getFiveRandomSongs());
         model.addAttribute("genres", genreService.getFiveRandomGenres());
@@ -38,6 +39,8 @@ public class TrackController {
             Model model,
             @PathParam("param") String param
     ){
+        //When a search is executed on start page the start page is reloaded but without the random artists, songs and genres and instead takes a list of songs from the search criteria.
+        //If the search executed had nothing written in the search field the default start page is loaded instead.
         if(param.length() == 0){
             return(view(model));
         }
