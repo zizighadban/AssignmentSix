@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "96f447cc-be7b-49e1-9f94-da90081174e5",
+		"name": "Chinook end-points",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Chrizi\",\r\n    \"lastName\": \"Neban\",\r\n    \"country\": \"Swestina\",\r\n    \"postalCode\": \"8793420\",\r\n    \"phone\": \"1234578\",\r\n    \"email\": \"skitsamma@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerByFirstName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer/firstname/Daa",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer",
+						"firstname",
+						"Daa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer/27",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer",
+						"27"
+					]
+				},
+				"description": "getCustomerById"
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerCountry",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer/country",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer",
+						"country"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerGenre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer/genre/27",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer",
+						"genre",
+						"27"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerSpender",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer/spender",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer",
+						"spender"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSpecificAmountOfCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer/10/29",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer",
+						"10",
+						"29"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"64\",\r\n    \"firstName\": \"Chrizi\",\r\n    \"lastName\": \"Neban\",\r\n    \"country\": \"Stateless\",\r\n    \"postalCode\": \"8793420\",\r\n    \"phone\": \"1234578\",\r\n    \"email\": \"chrizi@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/api/customer",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Thymeleaf Search \"ruth\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://chrizi-assignmentsix.herokuapp.com/search?param=ruth",
+					"protocol": "https",
+					"host": [
+						"chrizi-assignmentsix",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "ruth"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
