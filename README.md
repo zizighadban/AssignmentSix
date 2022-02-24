@@ -19,6 +19,9 @@ Before cloning repository install:
 ### Executing program
 - Open project in IDE and run AssignmentSexApplication main class.
 - Optionally compile the project without an IDE and run main-class.
+
+### Deployment
+[Deployed database application](https://chrizi-assignmentsix.herokuapp.com/)
 ## Author
 [Christian Neij](https://github.com/Loathed94)
 
