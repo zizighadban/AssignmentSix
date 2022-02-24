@@ -26,6 +26,8 @@ Before cloning repository install:
 ## License
 No license.
 ## Interpretation of non-trivial customer requirements
+3 - We interpreted this as taking in a name or partial name and returning ONE customer that matches, we chose to use first name.
+
 4 - We interpreted this as allowing the user to insert how many customers they want to see and the offset (i.e. from which index in the db).
 
 8 - We interpreted this requirement as wanting us to sum all invoice totals for each customer and listing them with customer ID and the sum from the highest total sum to lowest.
