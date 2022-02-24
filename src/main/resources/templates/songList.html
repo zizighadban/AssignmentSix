@@ -17,7 +17,16 @@
 
     <div th:if="${searchResult != null}">
         <ul th:each="result: ${searchResult}">
-            <li th:text="${result.getSong().getSongName()}"></li>
+            <li>
+                <span><b>Song found: </b></span>
+                <span th:text="${result.getSong().getSongName()}+'.'"></span>
+                <span><b>From the album: </b></span>
+                <span th:text="${result.getAlbum()}+'.'"></span>
+                <span><b>By the artist/band: </b></span>
+                <span th:text="${result.getArtist().getArtistName()}+'.'"></span>
+                <span><b>Belonging to the genre: </b></span>
+                <span th:text="${result.getGenre().getGenreName()}+'.'"></span>
+            </li>
         </ul>
     </div>
 
