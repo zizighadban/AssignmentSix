@@ -38,6 +38,9 @@ public class TrackController {
             Model model,
             @PathParam("param") String param
     ){
+        if(param.length() == 0){
+            return(view(model));
+        }
         Song song = new Song(param);
         model.addAttribute("searchResult", trackService.getTrackByName(song));
         return "songList";
