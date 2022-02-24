@@ -1,9 +1,9 @@
 package com.main.assignmentsix.view;
 
 import com.main.assignmentsix.model.Song;
-import com.main.assignmentsix.service.ArtistService;
-import com.main.assignmentsix.service.GenreService;
-import com.main.assignmentsix.service.TrackService;
+import com.main.assignmentsix.data_access.service.ArtistService;
+import com.main.assignmentsix.data_access.service.GenreService;
+import com.main.assignmentsix.data_access.service.TrackService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

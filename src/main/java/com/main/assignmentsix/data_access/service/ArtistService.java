@@ -1,6 +1,6 @@
-package com.main.assignmentsix.service;
+package com.main.assignmentsix.data_access.service;
 
-import com.main.assignmentsix.data_access.ArtistRepositoryImpl;
+import com.main.assignmentsix.data_access.repository.ArtistRepositoryImpl;
 import com.main.assignmentsix.model.Artist;
 import org.springframework.stereotype.Service;
 

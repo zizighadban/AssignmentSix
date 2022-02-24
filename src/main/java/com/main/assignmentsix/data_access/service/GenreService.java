@@ -1,6 +1,6 @@
-package com.main.assignmentsix.service;
+package com.main.assignmentsix.data_access.service;
 
-import com.main.assignmentsix.data_access.GenreRepositoryImpl;
+import com.main.assignmentsix.data_access.repository.GenreRepositoryImpl;
 import com.main.assignmentsix.model.Genre;
 import org.springframework.stereotype.Service;
 

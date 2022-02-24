@@ -1,5 +1,7 @@
-package com.main.assignmentsix.data_access;
+package com.main.assignmentsix.data_access.repository;
 
+import com.main.assignmentsix.data_access.DatabaseConnectionFactory;
+import com.main.assignmentsix.data_access.DevConnectionFactory;
 import com.main.assignmentsix.model.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,14 +13,18 @@ import java.util.List;
 
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
+    private final DatabaseConnectionFactory connectionFactory;
     private Connection conn = null;
+
+    public CustomerRepositoryImpl(DatabaseConnectionFactory connectionFactory){
+        this.connectionFactory = connectionFactory;}
 
     @Override
     public Customer getCustomerById(String customerId){
         Customer customer = null;
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -64,7 +70,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         List<Customer> customerList = new ArrayList<>();
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -105,7 +111,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         Customer customer = null;
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -147,7 +153,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         List<Customer> customerList = new ArrayList<>();
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -191,7 +197,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         boolean result = false;
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -229,7 +235,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         boolean result = false;
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -268,7 +274,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         List<CustomerCountry> customerCountryList = new ArrayList<>();
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -305,7 +311,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         List<CustomerSpender> customerSpenderList = new ArrayList<>();
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -342,7 +348,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         CustomerGenre customer = null;
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query

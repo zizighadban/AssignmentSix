@@ -1,5 +1,7 @@
-package com.main.assignmentsix.data_access;
+package com.main.assignmentsix.data_access.repository;
 
+import com.main.assignmentsix.data_access.DatabaseConnectionFactory;
+import com.main.assignmentsix.data_access.DevConnectionFactory;
 import com.main.assignmentsix.model.Artist;
 import org.springframework.stereotype.Repository;
 
@@ -11,14 +13,18 @@ import java.util.List;
 
 @Repository
 public class ArtistRepositoryImpl implements ArtistRepository{
+    private final DatabaseConnectionFactory connectionFactory;
     Connection conn = null;
+
+    public ArtistRepositoryImpl(DatabaseConnectionFactory connectionFactory){
+        this.connectionFactory = connectionFactory;}
 
     @Override
     public List<Artist> getFiveRandomArtists(){
         List<Artist> artistList = new ArrayList<>();
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query

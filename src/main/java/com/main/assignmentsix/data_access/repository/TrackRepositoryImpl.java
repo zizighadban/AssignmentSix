@@ -1,5 +1,7 @@
-package com.main.assignmentsix.data_access;
+package com.main.assignmentsix.data_access.repository;
 
+import com.main.assignmentsix.data_access.DatabaseConnectionFactory;
+import com.main.assignmentsix.data_access.DevConnectionFactory;
 import com.main.assignmentsix.model.Artist;
 import com.main.assignmentsix.model.Genre;
 import com.main.assignmentsix.model.Song;
@@ -14,14 +16,19 @@ import java.util.List;
 
 @Repository
 public class TrackRepositoryImpl implements TrackRepository{
+    DatabaseConnectionFactory connectionFactory;
     Connection conn = null;
+
+    public TrackRepositoryImpl(DatabaseConnectionFactory connectionFactory) {
+        this.connectionFactory = connectionFactory;
+    }
 
     @Override
     public List<Song> getFiveRandomSongs(){
         List<Song> songList = new ArrayList<>();
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query
@@ -57,7 +64,7 @@ public class TrackRepositoryImpl implements TrackRepository{
         List<Track> trackList = new ArrayList<>();
         try{
             // Connect to DB
-            conn = ConnectionFactory.getConnection();
+            conn = connectionFactory.getConnection();
             System.out.println("Connection to SQLite has been established.");
 
             // Make SQL query

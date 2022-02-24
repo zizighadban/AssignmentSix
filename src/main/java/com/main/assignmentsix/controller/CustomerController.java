@@ -1,7 +1,7 @@
 package com.main.assignmentsix.controller;
 
 import com.main.assignmentsix.model.Customer;
-import com.main.assignmentsix.data_access.CustomerRepositoryImpl;
+import com.main.assignmentsix.data_access.repository.CustomerRepositoryImpl;
 import com.main.assignmentsix.model.CustomerCountry;
 import com.main.assignmentsix.model.CustomerGenre;
 import com.main.assignmentsix.model.CustomerSpender;

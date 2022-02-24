@@ -1,4 +1,4 @@
-package com.main.assignmentsix.data_access;
+package com.main.assignmentsix.data_access.repository;
 
 import com.main.assignmentsix.model.Customer;
 import com.main.assignmentsix.model.CustomerCountry;

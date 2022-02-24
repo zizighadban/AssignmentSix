@@ -1,6 +1,6 @@
-package com.main.assignmentsix.service;
+package com.main.assignmentsix.data_access.service;
 
-import com.main.assignmentsix.data_access.TrackRepositoryImpl;
+import com.main.assignmentsix.data_access.repository.TrackRepositoryImpl;
 import com.main.assignmentsix.model.Song;
 import com.main.assignmentsix.model.Track;
 import org.springframework.stereotype.Service;
