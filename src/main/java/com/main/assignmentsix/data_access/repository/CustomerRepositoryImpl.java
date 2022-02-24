@@ -1,7 +1,6 @@
 package com.main.assignmentsix.data_access.repository;
 
 import com.main.assignmentsix.data_access.DatabaseConnectionFactory;
-import com.main.assignmentsix.data_access.DevConnectionFactory;
 import com.main.assignmentsix.model.*;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +20,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer getCustomerById(String customerId){
+        // Method that fetches the attributes in the SQL query below from the Customer-table by the CustomerId
         Customer customer = null;
         try{
             // Connect to DB
@@ -34,6 +34,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column properties from the database
             while (resultSet.next()) {
                 customer = new Customer(
                         resultSet.getInt("CustomerId"),
@@ -46,6 +47,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 );
             }
             if(customer == null){
+                // If the input of CustomerId doesn't exist in the database, return this string
                 System.out.println("CustomerID invalid!");
                 return null;
             }
@@ -67,6 +69,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<Customer> getAllCustomers() {
+        // Method that fetches a list of the attributes in the SQL query below from the Customer-table by the CustomerId
         List<Customer> customerList = new ArrayList<>();
         try{
             // Connect to DB
@@ -79,6 +82,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column properties from the database
             while (resultSet.next()) {
                 customerList.add(new Customer(
                         resultSet.getInt("CustomerId"),
@@ -108,6 +112,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer getCustomerByFirstName(String firstName) {
+        // Method that fetches the attributes in the SQL query below from the Customer-table by typing in a part of a first name
         Customer customer = null;
         try{
             // Connect to DB
@@ -121,6 +126,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column properties from the database
             while (resultSet.next()) {
                 customer = new Customer(
                         resultSet.getInt("CustomerId"),
@@ -150,6 +156,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<Customer> getSpecificAmountOfCustomers(String limit,String offset) {
+        // Method that fetches a sequence of attributes in the SQL query below from the Customer-table by limiting into a number of customers starting from a specific CustomerId
         List<Customer> customerList = new ArrayList<>();
         try{
             // Connect to DB
@@ -165,6 +172,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column properties from the database
             while (resultSet.next()) {
                 customerList.add(new Customer(
                         resultSet.getInt("CustomerId"),
@@ -194,6 +202,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public boolean addCustomer(Customer newCustomer) {
+        // Method that adds a new customer with the attributes in the SQL query below into the database
         boolean result = false;
         try{
             // Connect to DB
@@ -232,6 +241,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public boolean updateCustomer(Customer customer){
+        // Method that updates the customer's attributes in the SQL query below
         boolean result = false;
         try{
             // Connect to DB
@@ -271,6 +281,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<CustomerCountry> getCustomerCountry() {
+        // Method that fetches a list of the attributes in the SQL query below from the Customer-table in a descending order
         List<CustomerCountry> customerCountryList = new ArrayList<>();
         try{
             // Connect to DB
@@ -284,6 +295,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column properties from the database
             while (resultSet.next()) {
                 customerCountryList.add(new CustomerCountry(
                         resultSet.getInt("COUNT(Country)"),
@@ -308,6 +320,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<CustomerSpender> getCustomerSpender() {
+        // Method that fetches a list of the attributes in the SQL query below from the Customer-table in a descending order
         List<CustomerSpender> customerSpenderList = new ArrayList<>();
         try{
             // Connect to DB
@@ -321,6 +334,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column properties from the database
             while (resultSet.next()) {
                 customerSpenderList.add(new CustomerSpender(
                         resultSet.getInt("CustomerId"),
@@ -345,6 +359,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public CustomerGenre getCustomerGenre(String customerId) {
+        // Method that fetches the attributes in the SQL query below from the Customer-table by the CustomerId
         CustomerGenre customer = null;
         try{
             // Connect to DB
@@ -370,6 +385,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column properties from the database
             ArrayList<String> genres = new ArrayList<>();
             while (resultSet.next()) {
                 genres.add(

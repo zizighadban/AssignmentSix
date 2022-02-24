@@ -21,6 +21,7 @@ public class ArtistRepositoryImpl implements ArtistRepository{
 
     @Override
     public List<Artist> getFiveRandomArtists(){
+        // Method that fetches a list of five random artists from the Artist-table and limiting it to 5
         List<Artist> artistList = new ArrayList<>();
         try{
             // Connect to DB

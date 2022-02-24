@@ -22,6 +22,7 @@ public class GenreRepositoryImpl implements GenreRepository{
 
     @Override
     public List<Genre> getFiveRandomGenres(){
+        // Method that fetches a list of five random genres from the Genre-table and limiting it to 5
         List<Genre> genreList = new ArrayList<>();
         try{
             // Connect to DB
@@ -35,6 +36,7 @@ public class GenreRepositoryImpl implements GenreRepository{
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column property from the database
             while (resultSet.next()) {
                 genreList.add(new Genre(
                         resultSet.getString("Name")

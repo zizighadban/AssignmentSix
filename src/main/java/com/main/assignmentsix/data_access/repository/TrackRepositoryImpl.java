@@ -25,6 +25,7 @@ public class TrackRepositoryImpl implements TrackRepository{
 
     @Override
     public List<Song> getFiveRandomSongs(){
+        // Method that fetches a list of five random songs from the Track-table and limiting it to 5
         List<Song> songList = new ArrayList<>();
         try{
             // Connect to DB
@@ -38,6 +39,7 @@ public class TrackRepositoryImpl implements TrackRepository{
             // Execute Query
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Retrieve the information in the column property from the database
             while (resultSet.next()) {
                 songList.add(new Song(
                         resultSet.getString("Name")
