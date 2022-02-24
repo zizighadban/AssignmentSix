@@ -1,13 +1,12 @@
-package com.main.assignmentsix.controllers;
+package com.main.assignmentsix.controller;
 
-import com.main.assignmentsix.models.Customer;
-import com.main.assignmentsix.data_access.CustomerRepository;
-import com.main.assignmentsix.models.CustomerCountry;
-import com.main.assignmentsix.models.CustomerGenre;
-import com.main.assignmentsix.models.CustomerSpender;
+import com.main.assignmentsix.model.Customer;
+import com.main.assignmentsix.data_access.CustomerRepositoryImpl;
+import com.main.assignmentsix.model.CustomerCountry;
+import com.main.assignmentsix.model.CustomerGenre;
+import com.main.assignmentsix.model.CustomerSpender;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,10 +14,10 @@ import java.util.List;
 @RequestMapping("api")
 public class CustomerController {
 
-    private CustomerRepository customerRepository;
+    private CustomerRepositoryImpl customerRepository;
 
     public CustomerController(
-            CustomerRepository customerRepository
+            CustomerRepositoryImpl customerRepository
     ){
         this.customerRepository = customerRepository;
     }

@@ -1,4 +1,4 @@
-package com.main.assignmentsix.models;
+package com.main.assignmentsix.model;
 
 public class Customer {
     private int customerId;

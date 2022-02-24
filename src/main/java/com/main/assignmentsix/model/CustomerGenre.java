@@ -1,4 +1,4 @@
-package com.main.assignmentsix.models;
+package com.main.assignmentsix.model;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.main.assignmentsix.models;
+package com.main.assignmentsix.model;
 
 public class Song {
     private String songName;
